@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="59ea00b9-c440-4757-87c2-e3972b7c1da6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address=" http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PixService.wsdl" MetadataType="Wsdl" ID="05a4fdb5-e01b-46ab-89e9-e3da64a9057d" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?wsdl" />
+    <MetadataFile FileName="PixService.xsd" MetadataType="Schema" ID="74acdd8e-bf82-41ef-8fef-06d10d939395" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd6" />
+    <MetadataFile FileName="PixService1.xsd" MetadataType="Schema" ID="c213d0b3-a022-45f9-af7b-35998aec0bba" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd5" />
+    <MetadataFile FileName="PixService2.xsd" MetadataType="Schema" ID="4c5e0681-fb8d-40b2-b5a1-1dab81cb894e" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PixService3.xsd" MetadataType="Schema" ID="ee68cb6e-205b-456c-9696-1ee17f680d47" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PixService4.xsd" MetadataType="Schema" ID="a4ce5e4e-4fdd-41d1-bd1a-a5c4958f3a78" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PixService5.xsd" MetadataType="Schema" ID="796b1275-4a3e-49c6-a99f-0a100979ebb2" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PixService6.xsd" MetadataType="Schema" ID="a6df636e-3915-49f1-9d9f-d0c3f371869c" SourceId="1" SourceUrl="http://r78-rc.zdrav.netrika.ru/EMK/PixService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
