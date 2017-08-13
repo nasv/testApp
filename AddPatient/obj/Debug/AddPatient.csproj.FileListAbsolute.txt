@@ -26,3 +26,17 @@ C:\Users\user\testApp\AddPatient\bin\Debug\nunit.framework.xml
 C:\Users\user\testApp\AddPatient\obj\Debug\AddPatient.csprojResolveAssemblyReference.cache
 C:\Users\user\testApp\AddPatient\obj\Debug\AddPatient.dll
 C:\Users\user\testApp\AddPatient\obj\Debug\AddPatient.pdb
+E:\proj\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+E:\proj\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+E:\proj\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+E:\proj\testApp\AddPatient\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+E:\proj\testApp\AddPatient\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+E:\proj\testApp\AddPatient\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+E:\proj\testApp\AddPatient\bin\Debug\AddPatient.dll.config
+E:\proj\testApp\AddPatient\bin\Debug\AddPatient.dll
+E:\proj\testApp\AddPatient\bin\Debug\AddPatient.pdb
+E:\proj\testApp\AddPatient\bin\Debug\nunit.framework.dll
+E:\proj\testApp\AddPatient\bin\Debug\nunit.framework.xml
+E:\proj\testApp\AddPatient\obj\Debug\AddPatient.csprojResolveAssemblyReference.cache
+E:\proj\testApp\AddPatient\obj\Debug\AddPatient.dll
+E:\proj\testApp\AddPatient\obj\Debug\AddPatient.pdb
