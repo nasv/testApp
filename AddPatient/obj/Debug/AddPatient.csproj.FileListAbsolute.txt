@@ -12,3 +12,17 @@ c:\users\hp250\documents\visual studio 2017\Projects\AddPatient\AddPatient\bin\D
 c:\users\hp250\documents\visual studio 2017\Projects\AddPatient\AddPatient\obj\Debug\AddPatient.csprojResolveAssemblyReference.cache
 c:\users\hp250\documents\visual studio 2017\Projects\AddPatient\AddPatient\obj\Debug\AddPatient.dll
 c:\users\hp250\documents\visual studio 2017\Projects\AddPatient\AddPatient\obj\Debug\AddPatient.pdb
+C:\Users\user\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\AddPatient.dll.config
+C:\Users\user\testApp\AddPatient\bin\Debug\AddPatient.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\AddPatient.pdb
+C:\Users\user\testApp\AddPatient\bin\Debug\nunit.framework.dll
+C:\Users\user\testApp\AddPatient\bin\Debug\nunit.framework.xml
+C:\Users\user\testApp\AddPatient\obj\Debug\AddPatient.csprojResolveAssemblyReference.cache
+C:\Users\user\testApp\AddPatient\obj\Debug\AddPatient.dll
+C:\Users\user\testApp\AddPatient\obj\Debug\AddPatient.pdb
