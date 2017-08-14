@@ -40,3 +40,14 @@ E:\proj\testApp\AddPatient\bin\Debug\nunit.framework.xml
 E:\proj\testApp\AddPatient\obj\Debug\AddPatient.csprojResolveAssemblyReference.cache
 E:\proj\testApp\AddPatient\obj\Debug\AddPatient.dll
 E:\proj\testApp\AddPatient\obj\Debug\AddPatient.pdb
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\AddPatient.dll.config
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\AddPatient.dll
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\AddPatient.pdb
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\nunit.framework.dll
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\bin\Debug\nunit.framework.xml
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\obj\Debug\AddPatient.csprojResolveAssemblyReference.cache
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\obj\Debug\AddPatient.dll
+C:\Users\k\Documents\Visual Studio 2015\Projects\testApp\AddPatient\obj\Debug\AddPatient.pdb

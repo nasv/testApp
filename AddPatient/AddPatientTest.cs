@@ -6,12 +6,7 @@ namespace AddPatient
     [TestFixture]
     public class AddPatientTest
     {
-        /*
-         * temporaly use of GUID and IdLPU as strings not as GUID as it is said in Docs
-         * TBD:
-         * change string type to guid except for special tests 
-         * */
-
+      
         const string guid = "0310C7A6-BDF3-4124-B9D4-5FD5C72FA066";
         const string idLPU = "1.2.643.5.1.13.3.25.78.118";
         PixService.PixServiceClient client;
@@ -34,22 +29,24 @@ namespace AddPatient
         [Test]
         public void AddPatient_With_LatinName()
         {
-
-            
+          
             testPatient.FamilyName = "Ivanov";
             testPatient.GivenName = "Petr";
             testPatient.MiddleName = "Fedorovich";
             testPatient.BirthDate = new DateTime(1992, 05, 05);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
+
             client.AddPatient(guid, idLPU, testPatient);
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
         [Test]
         public void AddPatient_With_RusName()
         {
+           
 
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -57,8 +54,10 @@ namespace AddPatient
             testPatient.BirthDate = new DateTime(1992, 05, 05);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
+
             client.AddPatient(guid, idLPU, testPatient);
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
+
             Assert.AreEqual("Иванов", testPatients[0].FamilyName);
         }
 
@@ -73,7 +72,7 @@ namespace AddPatient
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -87,7 +86,7 @@ namespace AddPatient
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
             client.AddPatient(guid, idLPU, testPatient);
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -101,7 +100,7 @@ namespace AddPatient
             testPatient.BirthDate = new DateTime();
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -115,7 +114,7 @@ namespace AddPatient
             testPatient.BirthDate = DateTime.Now.AddDays(1);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -128,7 +127,7 @@ namespace AddPatient
             testPatient.BirthDate = new DateTime(1993, 05, 05);
             testPatient.Sex = 1;
       
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
 
@@ -142,9 +141,11 @@ namespace AddPatient
             testPatient.BirthDate = new DateTime(1992, 05, 05);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
+
             client.AddPatient(guid, idLPU, testPatient);
 
             testPatient.FamilyName = "Петров";
+
             client.AddPatient(guid, idLPU, testPatient);
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
@@ -165,6 +166,7 @@ namespace AddPatient
 
             testPatient.GivenName = "Иван";
             client.AddPatient(guid, idLPU, testPatient);
+
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
             Assert.AreEqual("Иван", testPatients[0].GivenName);
@@ -191,8 +193,8 @@ namespace AddPatient
             testPatient2.Sex = 1;
 
             client.AddPatient(guid, idLPU, testPatient2);
-            PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
-            Assert.That(testPatient2.Equals(testPatients[0]));
+            PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient2, PixService.SourceType.Reg);
+            Assert.AreEqual(testPatient2.GetHashCode(), testPatients[0].GetHashCode());
             //Equals ?
         }
 
@@ -206,6 +208,7 @@ namespace AddPatient
             testPatient.BirthDate = new DateTime(1992, 05, 05);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
+
             client.AddPatient(guid, idLPU, testPatient);
             PixService.PatientDto testPatient2 = new PixService.PatientDto();
 
@@ -241,7 +244,7 @@ namespace AddPatient
             priv.DateEnd = new DateTime(2017, 01, 20);
             //не происходит проверки даты
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -259,7 +262,7 @@ namespace AddPatient
             testPatient.SocialGroup = 0;
             testPatient.SocialStatus = "2@";
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -276,6 +279,7 @@ namespace AddPatient
             testPatient.IdLivingAreaType = 2;
             testPatient.SocialGroup = 5;
             testPatient.SocialStatus = "2@";
+
            
             Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
         }
@@ -294,6 +298,8 @@ namespace AddPatient
             testPatient.SocialGroup = 1;
             testPatient.SocialStatus = "2@";
 
+            client.AddPatient(guid, idLPU, testPatient);
+           
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
             Assert.AreEqual(1, testPatients[0].SocialGroup);
@@ -314,6 +320,8 @@ namespace AddPatient
             testPatient.SocialGroup = 1;
             testPatient.SocialStatus = "2@";
 
+            client.AddPatient(guid, idLPU, testPatient);
+
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
             Assert.AreEqual("2@", testPatients[0].SocialStatus);
@@ -330,7 +338,7 @@ namespace AddPatient
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 0;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -345,7 +353,7 @@ namespace AddPatient
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 4;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -360,7 +368,7 @@ namespace AddPatient
             testPatient.Sex = 1;
             testPatient.IdBloodType = 0;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -375,7 +383,7 @@ namespace AddPatient
             testPatient.Sex = 1;
             testPatient.IdBloodType = 9;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -390,7 +398,7 @@ namespace AddPatient
             testPatient.Sex = 1;
             testPatient.IdLivingAreaType = 0;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -405,7 +413,7 @@ namespace AddPatient
             testPatient.Sex = 1;
             testPatient.IdLivingAreaType = 3;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -430,7 +438,7 @@ namespace AddPatient
 
             testPatient.Job = job;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -451,7 +459,7 @@ namespace AddPatient
 
             testPatient.Job = job;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -472,9 +480,11 @@ namespace AddPatient
             contact.IdContactType = 0;
             contact.ContactValue = "мать";
 
+            testPatient.Contacts = new PixService.ContactDto[1];
+
             testPatient.Contacts[0] = contact;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -494,9 +504,10 @@ namespace AddPatient
             contact.IdContactType = 5;
             contact.ContactValue = "мать";
 
+            testPatient.Contacts = new PixService.ContactDto[1];
             testPatient.Contacts[0] = contact;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -532,7 +543,6 @@ namespace AddPatient
             testPatient.BirthDate = new DateTime(1992, 05, 05);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
-            testPatient.IdLivingAreaType = 1;
 
             PixService.BirthPlaceDto birthPlace = new PixService.BirthPlaceDto();
             birthPlace.Country = "Россия";
@@ -570,10 +580,11 @@ namespace AddPatient
             address.Building = "34";
             address.Appartment = "654";
             address.City = "Санкт-Петербург";
-
-            client.AddPatient(guid, idLPU, testPatient);
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
+
+            client.AddPatient(guid, idLPU, testPatient);
 
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
@@ -599,13 +610,15 @@ namespace AddPatient
             testPatient.Sex = 1;
             testPatient.IdLivingAreaType = 1;
 
+
             PixService.AddressDto address = new PixService.AddressDto();
             address.IdAddressType = 0;
             address.StringAddress = "ул. Автомобильная, 34-654";
 
+            testPatient.Addresses = new PixService.AddressDto[1];
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -622,10 +635,11 @@ namespace AddPatient
             PixService.AddressDto address = new PixService.AddressDto();
             address.IdAddressType = 10;
             address.StringAddress = "ул. Автомобильная, 34-654";
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -642,6 +656,7 @@ namespace AddPatient
             PixService.AddressDto address = new PixService.AddressDto();
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
@@ -667,6 +682,7 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.Street = "78000000000005400";
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
@@ -692,10 +708,11 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.Street = "78 000 000 000 0054 00";
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -714,10 +731,11 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.Street = "78000000000005500";
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -737,6 +755,7 @@ namespace AddPatient
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.PostalCode = 198216;
 
+            testPatient.Addresses = new PixService.AddressDto[1];
             testPatient.Addresses[0] = address;
 
             client.AddPatient(guid, idLPU, testPatient);
@@ -761,6 +780,7 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.PostalCode = Convert.ToInt32("198216");
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
@@ -787,10 +807,11 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.PostalCode = 194216;
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -809,10 +830,11 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.Building = "32";
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -832,9 +854,12 @@ namespace AddPatient
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.Appartment = "321";
 
-            testPatient.Addresses[0] = address;
+            testPatient.Addresses = new PixService.AddressDto[1];
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            testPatient.Addresses[0] = address;
+            client.AddPatient(guid, idLPU, testPatient);
+
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -854,9 +879,11 @@ namespace AddPatient
             address.StringAddress = "ул. Автомобильная, 34-654";
             address.GeoData = "sfdfsfsdfdf"; //Пожелание: маска GeoData
 
+            testPatient.Addresses = new PixService.AddressDto[1];
+
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -876,24 +903,50 @@ namespace AddPatient
             address.IdAddressType = 1;
             address.StringAddress = "Кирочная";
             address.City = "Санкт-Петербург";//Город
+            testPatient.Addresses = new PixService.AddressDto[1];
 
             testPatient.Addresses[0] = address;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
+        [Test]
+        public void AddPatient_With_2_Addresses()
+        {
+            testPatient.FamilyName = "Иванов";
+            testPatient.GivenName = "Петр";
+            testPatient.MiddleName = "Федорович";
+            testPatient.BirthDate = new DateTime(1992, 05, 05);
+            testPatient.IdPatientMIS = "1234567";
+            testPatient.Sex = 1;
+            testPatient.IdLivingAreaType = 2; //Село
+
+            PixService.AddressDto address = new PixService.AddressDto();
+            address.IdAddressType = 1;
+            address.StringAddress = "Кирочная";
+            address.City = "Санкт-Петербург";//Город
+
+            PixService.AddressDto address2 = new PixService.AddressDto();
+            address2.IdAddressType = 2;
+            address2.StringAddress = "Кирочная ул., д. 24-3-345";
+            address2.City = "Санкт-Петербург";//Город
+
+            testPatient.Addresses = new PixService.AddressDto[2];
+
+            testPatient.Addresses[0] = address;
+            testPatient.Addresses[1] = address2;
+
+            client.AddPatient(guid, idLPU, testPatient);
+
+            PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
+
+            Assert.AreEqual("Кирочная", testPatients[0].Addresses[0].StringAddress);
+            Assert.AreEqual("Кирочная ул., д. 24-3-345", testPatients[0].Addresses[1].StringAddress);
+     
+        }
+
         //Document
-        /* 1 - 1
-         * IdDocumentType
-         * DocS 	    Для документов, у которых указывается серия| Не должны использоваться разделители (пробелы, тире и т.д.)
-         * DocN         Не должны использоваться разделители (пробелы, тире и т.д.)
-         * ProviderName Не должны использоваться разделители (пробелы, тире и т.д.)
-         * 
-         * 0 - 1 
-         * IdProvider Заполняется только для полисов (Реестр страховых медицинских организаций (ФОМС),  - В справочнике Int, по факту - string. (Придется писать пока что string)
-         * 
-             */
 
         [Test]
         public void AddPatient_With_Document()
@@ -914,10 +967,10 @@ namespace AddPatient
             doc.ProviderName = "ОМ45";
             doc.RegionCode = "78";
 
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
             client.AddPatient(guid, idLPU, testPatient);
-
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
             Assert.AreEqual(1, testPatients[0].Documents[0].IdDocumentType);
@@ -929,6 +982,47 @@ namespace AddPatient
             Assert.AreEqual("78", testPatients[0].Documents[0].RegionCode);
 
         }
+
+        [Test]
+        public void AddPatient_With_2_Documents()
+        {
+            testPatient.FamilyName = "Иванов";
+            testPatient.GivenName = "Петр";
+            testPatient.MiddleName = "Федорович";
+            testPatient.BirthDate = new DateTime(1992, 05, 05);
+            testPatient.IdPatientMIS = "1234567";
+            testPatient.Sex = 1;
+
+            PixService.DocumentDto doc = new PixService.DocumentDto();
+            doc.IdDocumentType = 1;
+            doc.DocS = "4445";
+            doc.DocN = "444444";
+         
+
+            PixService.DocumentDto doc2 = new PixService.DocumentDto();
+            doc2.IdDocumentType = 230;
+            doc.DocS = "4445";
+            doc2.DocN = "44444355344";
+
+            testPatient.Documents = new PixService.DocumentDto[2];
+
+            testPatient.Documents[0] = doc;
+            testPatient.Documents[1] = doc2;
+
+            client.AddPatient(guid, idLPU, testPatient);
+
+            PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
+
+            Assert.AreEqual(1, testPatients[0].Documents[0].IdDocumentType);
+            Assert.AreEqual("4445", testPatients[0].Documents[0].DocS);
+            Assert.AreEqual("444444", testPatients[0].Documents[0].DocN);
+            Assert.AreEqual(230, testPatients[0].Documents[1].IdDocumentType);
+            Assert.AreEqual("4445", testPatients[0].Documents[1].DocS);
+            Assert.AreEqual("44444355344", testPatients[0].Documents[1].DocN);
+
+        }
+
+
 
         //IdProvider for not ПОЛИС
         // 226 Полис ОМС старого образца
@@ -951,9 +1045,10 @@ namespace AddPatient
             doc.DocS = "4445";
             doc.DocN = "etretet";
 
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -971,10 +1066,10 @@ namespace AddPatient
             doc.IdDocumentType = 1;
             doc.DocS = "sfdfsf";
             doc.DocN = "345678";
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -994,10 +1089,10 @@ namespace AddPatient
             doc.IdDocumentType = 1;
             doc.DocS = "44 45";
             doc.DocN = "444444";
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -1015,10 +1110,10 @@ namespace AddPatient
             doc.IdDocumentType = 1;
             doc.DocS = "4445";
             doc.DocN = "444 444";
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -1037,10 +1132,10 @@ namespace AddPatient
             doc.DocS = "4445";
             doc.DocN = "444444";
             doc.ProviderName = "ОМ 45";
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -1056,10 +1151,10 @@ namespace AddPatient
 
             PixService.DocumentDto doc = new PixService.DocumentDto();
             doc.IdDocumentType = 1;
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -1081,10 +1176,10 @@ namespace AddPatient
             doc.IssuedDate = new DateTime(2010, 01, 01);
             doc.ProviderName = "sdfsdf";
             doc.RegionCode = "sdfsf";
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -1104,10 +1199,10 @@ namespace AddPatient
             doc.DocN = "545455"; // Не должны использоваться разделители (пробелы, тире и т.д.)
             doc.ExpiredDate = new DateTime(2010, 01, 01);
             doc.IssuedDate = new DateTime(2020, 01, 01);
-
+            testPatient.Documents = new PixService.DocumentDto[1];
             testPatient.Documents[0] = doc;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
