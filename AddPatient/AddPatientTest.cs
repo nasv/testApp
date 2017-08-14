@@ -6,7 +6,7 @@ namespace AddPatient
     [TestFixture]
     public class AddPatientTest
     {
-      
+
         const string guid = "0310C7A6-BDF3-4124-B9D4-5FD5C72FA066";
         const string idLPU = "1.2.643.5.1.13.3.25.78.118";
         PixService.PixServiceClient client;
@@ -29,7 +29,7 @@ namespace AddPatient
         [Test]
         public void AddPatient_With_LatinName()
         {
-          
+
             testPatient.FamilyName = "Ivanov";
             testPatient.GivenName = "Petr";
             testPatient.MiddleName = "Fedorovich";
@@ -46,7 +46,7 @@ namespace AddPatient
         [Test]
         public void AddPatient_With_RusName()
         {
-           
+
 
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -90,10 +90,10 @@ namespace AddPatient
 
         }
 
-       [Test]
+        [Test]
         public void AddPatient_With_Invalid_BirthDate()
         {
-            
+
             testPatient.FamilyName = "Ivanov";
             testPatient.GivenName = "Petr";
             testPatient.MiddleName = "Fedorovich";
@@ -110,7 +110,6 @@ namespace AddPatient
             testPatient.FamilyName = "Ivanov";
             testPatient.GivenName = "Petr";
             testPatient.MiddleName = "Fedorovich";
-                  
             testPatient.BirthDate = DateTime.Now.AddDays(1);
             testPatient.IdPatientMIS = "1234567";
             testPatient.Sex = 1;
@@ -126,7 +125,7 @@ namespace AddPatient
             testPatient.MiddleName = "Федорович";
             testPatient.BirthDate = new DateTime(1993, 05, 05);
             testPatient.Sex = 1;
-      
+
             Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
@@ -223,7 +222,7 @@ namespace AddPatient
 
         }
 
-      
+
         [Test]
         public void AddPatient_With_Privilege_DateEnd_LessThan_DateStart()
         {
@@ -268,7 +267,7 @@ namespace AddPatient
         [Test]
         public void AddPatient_With_SocialGroup_5()
         {
-    
+
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
             testPatient.MiddleName = "Федорович";
@@ -280,8 +279,7 @@ namespace AddPatient
             testPatient.SocialGroup = 5;
             testPatient.SocialStatus = "2@";
 
-           
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
         }
 
         [Test]
@@ -299,7 +297,7 @@ namespace AddPatient
             testPatient.SocialStatus = "2@";
 
             client.AddPatient(guid, idLPU, testPatient);
-           
+
             PixService.PatientDto[] testPatients = client.GetPatient(guid, idLPU, testPatient, PixService.SourceType.Reg);
 
             Assert.AreEqual(1, testPatients[0].SocialGroup);
@@ -417,7 +415,7 @@ namespace AddPatient
 
         }
 
-           
+
         [Test]
         public void AddPatient_With_Job_DateEnd_LessThan_DateStart()
         {
@@ -475,7 +473,7 @@ namespace AddPatient
             testPatient.Sex = 1;
             testPatient.IdLivingAreaType = 1;
 
-       
+
             PixService.ContactDto contact = new PixService.ContactDto();
             contact.IdContactType = 0;
             contact.ContactValue = "мать";
@@ -530,7 +528,7 @@ namespace AddPatient
 
             testPatient.BirthPlace = birthPlace;
 
-            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.Exception);
+            Assert.That(() => client.AddPatient(guid, idLPU, testPatient), Throws.ArgumentException);
 
         }
 
@@ -887,7 +885,7 @@ namespace AddPatient
 
         }
 
-        
+
         [Test]
         public void AddPatient_With_Invalid_Address_City_and_IdLivingAreaType()
         {
@@ -943,7 +941,7 @@ namespace AddPatient
 
             Assert.AreEqual("Кирочная", testPatients[0].Addresses[0].StringAddress);
             Assert.AreEqual("Кирочная ул., д. 24-3-345", testPatients[0].Addresses[1].StringAddress);
-     
+
         }
 
         //Document
@@ -997,7 +995,7 @@ namespace AddPatient
             doc.IdDocumentType = 1;
             doc.DocS = "4445";
             doc.DocN = "444444";
-         
+
 
             PixService.DocumentDto doc2 = new PixService.DocumentDto();
             doc2.IdDocumentType = 230;
@@ -1209,4 +1207,4 @@ namespace AddPatient
 
 
     }
-    }
+}
