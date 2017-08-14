@@ -77,7 +77,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Wrong_FamilyName()
+        public void AddPatient_With_Invalid_FamilyName()
         {
 
             testPatient.FamilyName = "ОРоырв224*/-";
@@ -92,7 +92,7 @@ namespace AddPatient
         }
 
        [Test]
-        public void AddPatient_With_WrongDate()
+        public void AddPatient_With_Invalid_BirthDate()
         {
             
             testPatient.FamilyName = "Ivanov";
@@ -435,7 +435,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Job_Wrong_OgrnCode()
+        public void AddPatient_With_Job_Invalid_OgrnCode()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -502,7 +502,7 @@ namespace AddPatient
 
 
         [Test]
-        public void AddPatient_With_Wrong_BirthPlace()
+        public void AddPatient_With_Invalid_BirthPlace()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -524,7 +524,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_True_BirthPlace()
+        public void AddPatient_With_Valid_BirthPlace()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -552,7 +552,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_True_Address()
+        public void AddPatient_With_Valid_Address()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -629,7 +629,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_True_StringAddress()
+        public void AddPatient_With_Address_Valid_StringAddress()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -653,7 +653,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_True_Street_Without_Spaces()
+        public void AddPatient_With_Address_Valid_Street_Without_Spaces()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -678,7 +678,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_True_Street_With_Spaces()
+        public void AddPatient_With_Address_Valid_Street_With_Spaces()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -700,7 +700,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_Wrong_Street()
+        public void AddPatient_With_Address_Invalid_Street()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -722,7 +722,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_True_PostalCode()
+        public void AddPatient_With_Address_Valid_PostalCode()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -747,7 +747,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_True_PostalCode_Convert_ToInt()
+        public void AddPatient_With_Address_Valid_PostalCode_Convert_ToInt()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -773,7 +773,7 @@ namespace AddPatient
 
 
         [Test]
-        public void AddPatient_With_Address_Wrong_PostalCode()
+        public void AddPatient_With_Address_Invalid_PostalCode()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -795,7 +795,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_Wrong_Building()
+        public void AddPatient_With_Address_Invalid_Building()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -817,7 +817,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_Wrong_Apartment()
+        public void AddPatient_With_Address_Invalid_Apartment()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -839,7 +839,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Address_Wrong_GeoData()
+        public void AddPatient_With_Address_Invalid_GeoData()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -862,7 +862,7 @@ namespace AddPatient
 
         
         [Test]
-        public void AddPatient_With_Wrong_Address_City_and_IdLivingAreaType()
+        public void AddPatient_With_Invalid_Address_City_and_IdLivingAreaType()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
@@ -1045,7 +1045,7 @@ namespace AddPatient
         }
 
         [Test]
-        public void AddPatient_With_Document_Not_Enough_Data()
+        public void AddPatient_With_Document_MissParameter_DocN()
         {
             testPatient.FamilyName = "Иванов";
             testPatient.GivenName = "Петр";
